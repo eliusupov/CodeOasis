@@ -1,0 +1,76 @@
+.bookCard {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	height: 350px;
+	background: #ffffff;
+	border-radius: 6px;
+	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+	max-width: 23%;
+	margin: 1%;
+	flex: 1 23%;
+	padding: 10px;
+
+	&:hover {
+		> :global(.anticon) {
+			opacity: 1;
+			font-size: 16px;
+		}
+	}
+
+	> .content {
+		height: 130px;
+		padding: 0 10px;
+		> * {
+			margin: 0;
+		}
+	}
+
+	> img {
+		height: 200px;
+		object-fit: contain;
+		margin-bottom: 20px;
+	}
+
+	> button {
+		margin: auto auto 0 auto;
+		padding: 5px 10px;
+		background: #0567b3;
+		color: #ffffff;
+		outline: none;
+		border: none;
+		cursor: pointer;
+		border-radius: 6px;
+		width: max-content;
+	}
+
+	> :global(.anticon) {
+		opacity: 0;
+		position: absolute;
+		cursor: pointer;
+
+		&:global(.anticon-close) {
+			top: 5px;
+			right: 5px;
+		}
+
+		&:global(.anticon-edit) {
+			bottom: 5px;
+			right: 5px;
+		}
+	}
+}
+
+@media screen and (max-width: 1200px) {
+	.bookCard {
+		max-width: 48%;
+		flex: 1 48%;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	.bookCard {
+		max-width: 100%;
+		flex: 1 100%;
+	}
+}

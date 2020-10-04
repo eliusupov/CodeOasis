@@ -1,0 +1,20 @@
+.ordersSection {
+	display: flex;
+	flex-direction: column;
+	width: 50%;
+	min-height: calc(100vh - 80px);
+	border-radius: 6px;
+	background: #eeeeee;
+	padding: 10px;
+	list-style-type: none;
+	margin: 0;
+
+	.book {
+		display: flex;
+		align-items: center;
+
+		> * {
+			margin: 0 5px;
+		}
+	}
+}

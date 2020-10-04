@@ -1,0 +1,22 @@
+.cartSection {
+	display: flex;
+	flex-direction: column;
+	width: 50%;
+	min-height: calc(100vh - 80px);
+	border-radius: 6px;
+	background: #eeeeee;
+	padding: 10px;
+	list-style-type: none;
+	margin: 0;
+
+	> li.orderButton {
+		text-align: center;
+		margin-top: auto;
+		justify-content: center;
+		background: none;
+
+		> button {
+			margin: 0;
+		}
+	}
+}

@@ -1,0 +1,28 @@
+.login {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	margin-top: 25vh;
+
+	> .loginForm {
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		min-width: 400px;
+		height: max-content;
+		background: #ffffff;
+		padding: 20px 40px;
+		border-radius: 6px;
+		box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+
+		> h3 {
+			margin-bottom: 15px;
+		}
+
+		> .err {
+			color: #ff4d4f;
+			margin-bottom: 10px;
+		}
+	}
+}

@@ -1,0 +1,43 @@
+.cart {
+	padding: 15px;
+	background: #ffffff;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+
+	> .inner {
+		display: flex;
+		align-items: center;
+
+		> ul {
+			:first-child {
+				text-align: center;
+			}
+		}
+
+		> .spacer {
+			width: 1%;
+		}
+	}
+}
+
+@media screen and (max-width: 1024px) {
+	.cart {
+		> .inner {
+			width: 100%;
+			flex-direction: column;
+
+			> .spacer {
+				height: 20px;
+			}
+
+			> .innerCart {
+				width: 100%;
+			}
+
+			> .innerOrders {
+				width: 100%;
+			}
+		}
+	}
+}

@@ -1,0 +1,19 @@
+.bookStore {
+	padding: 15px;
+	background: #ffffff;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+
+	> .inner {
+		min-height: calc(100vh - 70px);
+		border-radius: 6px;
+		background: #eeeeee;
+		padding: 10px;
+
+		> .innerContent {
+			display: flex;
+			flex-wrap: wrap;
+		}
+	}
+}
