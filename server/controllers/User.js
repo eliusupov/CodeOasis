@@ -14,7 +14,7 @@ exports.userCreate = async (req, res, next) => {
 				const token = jwt.sign({ userId: user._id, email: user.email, isAdmin: user.isAdmin }, 'secret', {
 					expiresIn: '8h',
 				});
-				res.status(201).send({ userId: user._id, token: token, success: true });
+				res.status(201).send({ userId: user._id, token: token });
 			} catch (err) {
 				if (!err.statusCode) {
 					err.statusCode = 500;
@@ -38,7 +38,6 @@ exports.userLogin = async (req, res, next) => {
 				expiresIn: '8h',
 			});
 			res.send({
-				success: true,
 				userId: user._id,
 				token,
 			});
@@ -74,7 +73,6 @@ exports.userAddBookToCart = async (req, res, next) => {
 			const updatedUser = await User.findOneAndUpdate({ _id: userId }, { cart }, { new: true });
 			if (updatedUser) {
 				res.send({
-					success: true,
 					userId,
 					cart: updatedCart,
 				});
@@ -101,7 +99,6 @@ exports.userRemoveBookFromCart = async (req, res, next) => {
 			const updatedUser = await User.findOneAndUpdate({ _id: userId }, { cart: updatedCartIds }, { new: true });
 			if (updatedUser) {
 				res.send({
-					success: true,
 					userId,
 					cart: updatedCart,
 				});
@@ -124,7 +121,6 @@ exports.userGetCart = async (req, res, next) => {
 			const userCart = user.cart;
 			const cart = await Book.find({ _id: { $in: userCart } });
 			res.send({
-				success: true,
 				userId,
 				cart,
 			});

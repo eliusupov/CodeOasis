@@ -14,7 +14,7 @@ exports.orderGetAll = async (req, res, next) => {
 				books: await Book.find({ _id: { $in: order.books } }),
 			})),
 		);
-		res.send({ orders, success: true });
+		res.send({ orders });
 	} catch (err) {
 		if (!err.statusCode) {
 			err.statusCode = 500;
@@ -38,7 +38,6 @@ exports.orderAddNew = async (req, res, next) => {
 		};
 		res.status(201).send({
 			order,
-			success: true,
 			cart: user.cart,
 		});
 	} catch (err) {
