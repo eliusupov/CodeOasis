@@ -1,5 +1,4 @@
 import { hot } from 'react-hot-loader/root';
-import React, { lazy, Suspense, useEffect } from 'react';
 import { BrowserRouter, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
