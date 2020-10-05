@@ -1,4 +1,5 @@
 import { hot } from 'react-hot-loader/root';
+import React from 'react';
 import { BrowserRouter, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
