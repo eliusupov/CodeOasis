@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-
-import * as actions from '../../store/actions/actions';
+import { PropTypes } from 'prop-types';
 
 import BookCard from '../../Components/BookStore/BookCard/BookCard';
 import BookModal from '../../Components/BookStore/BookModal/BookModal';
 import MainNavBar from '../../Components/MainComponents/MainNavBar/MainNavBar';
+
+import * as actions from '../../store/actions/actions';
 
 import classes from './BookStore.module.scss';
 
@@ -27,8 +28,6 @@ const bookStore = props => {
 			dispatch(userGetCart());
 		}
 	}, [token]);
-
-	console.log(cart);
 
 	return (
 		<div className={classes.bookStore}>
@@ -61,6 +60,12 @@ const bookStore = props => {
 			</div>
 		</div>
 	);
+};
+
+bookStore.propTypes = {
+	history: PropTypes.shape({
+		push: PropTypes.func,
+	}).isRequired,
 };
 
 export default bookStore;

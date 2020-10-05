@@ -1,4 +1,5 @@
 import React from 'react';
+import { PropTypes } from 'prop-types';
 import { Button, Input } from 'antd';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -15,7 +16,6 @@ const mainNavBar = props => {
 	const cart = useSelector(state => state.userReducer.cart);
 	const isAdmin = useSelector(state => state.userReducer.isAdmin);
 	const { userLogout, toggleBookModal, searchForBook } = actions;
-	console.log(isAdmin, 'isAdmin');
 	return (
 		<ul className={classes.mainNavBar}>
 			<li>
@@ -58,6 +58,14 @@ const mainNavBar = props => {
 			</li>
 		</ul>
 	);
+};
+
+mainNavBar.propTypes = {
+	history: PropTypes.shape({
+		location: PropTypes.shape({
+			pathname: PropTypes.string,
+		}),
+	}).isRequired,
 };
 
 export default mainNavBar;

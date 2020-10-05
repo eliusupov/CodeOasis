@@ -77,7 +77,6 @@ exports.userAddBookToCart = async (req, res, next) => {
 					success: true,
 					userId,
 					cart: updatedCart,
-					userCart: updatedUser.cart,
 				});
 			} else {
 				const error = new Error();
@@ -105,7 +104,6 @@ exports.userRemoveBookFromCart = async (req, res, next) => {
 					success: true,
 					userId,
 					cart: updatedCart,
-					userCart: updatedUser.cart,
 				});
 			} else {
 				const error = new Error();
@@ -129,7 +127,6 @@ exports.userGetCart = async (req, res, next) => {
 				success: true,
 				userId,
 				cart,
-				userCart: user.cart,
 			});
 		}
 	} catch (err) {

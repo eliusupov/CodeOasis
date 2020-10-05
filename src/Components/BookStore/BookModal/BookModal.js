@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
-import { Modal, Button, Form, Input, Checkbox } from 'antd';
+import { PropTypes } from 'prop-types';
+import { Modal, Button, Form, Input } from 'antd';
 import { useDispatch } from 'react-redux';
 import * as actions from '../../../store/actions/actions';
 
@@ -76,6 +77,21 @@ const bookModal = props => {
 			</Form>
 		</Modal>
 	);
+};
+
+bookModal.defaultProps = {
+	isBookModalOpen: false,
+};
+
+bookModal.propTypes = {
+	isBookModalOpen: PropTypes.bool,
+	bookToUpdate: PropTypes.shape({
+		_id: PropTypes.string,
+		title: PropTypes.string,
+		publisher: PropTypes.string,
+		author: PropTypes.string,
+		image: PropTypes.string,
+	}).isRequired,
 };
 
 export default bookModal;

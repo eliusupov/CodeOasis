@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button } from 'antd';
+import { PropTypes } from 'prop-types';
 import { CloseOutlined, EditOutlined } from '@ant-design/icons';
 
 import classes from './BookCard.module.scss';
@@ -33,6 +34,27 @@ const bookCard = props => {
 			)}
 		</div>
 	);
+};
+
+bookCard.defaultProps = {
+	isAdmin: false,
+	addToCart: () => {},
+	deleteBook: () => {},
+	toggleBookModal: () => {},
+};
+
+bookCard.propTypes = {
+	isAdmin: PropTypes.bool,
+	addToCart: PropTypes.func,
+	deleteBook: PropTypes.func,
+	toggleBookModal: PropTypes.func,
+	book: PropTypes.shape({
+		_id: PropTypes.string,
+		title: PropTypes.string,
+		publisher: PropTypes.string,
+		author: PropTypes.string,
+		image: PropTypes.string,
+	}).isRequired,
 };
 
 export default bookCard;

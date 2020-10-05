@@ -6,9 +6,9 @@
 	background: #ffffff;
 	border-radius: 6px;
 	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-	max-width: 23%;
 	margin: 1%;
-	flex: 1 23%;
+	max-width: 31.3%;
+	flex: 1 31.3%;
 	padding: 10px;
 
 	&:hover {
@@ -68,7 +68,7 @@
 	}
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 768px) {
 	.bookCard {
 		max-width: 100%;
 		flex: 1 100%;

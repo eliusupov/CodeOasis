@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { PropTypes } from 'prop-types';
 import { Form, Input, Button, Checkbox } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 
@@ -11,7 +12,8 @@ import classes from './SystemEntry.module.scss';
 const systemEntry = props => {
 	const [userAlreadyExist, setUserAlreadyExist] = useState(false);
 	const [incorrectLogin, setIncorrectLogin] = useState(false);
-	const { location, history } = props;
+	const { history } = props;
+	const { location } = history;
 	const { pathname } = location;
 	const dispatch = useDispatch();
 
@@ -99,6 +101,14 @@ const systemEntry = props => {
 			</Form>
 		</div>
 	);
+};
+
+systemEntry.propTypes = {
+	history: PropTypes.shape({
+		location: PropTypes.shape({
+			pathname: PropTypes.string,
+		}),
+	}).isRequired,
 };
 
 export default systemEntry;

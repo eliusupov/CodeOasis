@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { PropTypes } from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 
 import * as actions from '../../store/actions/actions';
@@ -14,7 +15,6 @@ const purchase = props => {
 	const dispatch = useDispatch();
 	const cart = useSelector(state => state.userReducer.cart);
 	const token = useSelector(state => state.userReducer.token);
-	const books = useSelector(state => state.booksReducer.books);
 	const orders = useSelector(state => state.orderReducer.orders);
 
 	useEffect(() => {
@@ -38,6 +38,14 @@ const purchase = props => {
 			</div>
 		</div>
 	);
+};
+
+purchase.propTypes = {
+	history: PropTypes.shape({
+		location: PropTypes.shape({
+			pathname: PropTypes.string,
+		}),
+	}).isRequired,
 };
 
 export default purchase;

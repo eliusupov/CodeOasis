@@ -1,6 +1,7 @@
 import React from 'react';
 import { Collapse } from 'antd';
 import moment from 'moment';
+import { PropTypes } from 'prop-types';
 
 import classes from './OrdersSection.module.scss';
 
@@ -12,14 +13,15 @@ const ordersSection = props => {
 			<h2>Orders</h2>
 			<Collapse accordion>
 				{orders.map(order => {
+					const { _id, createDate, books } = order;
 					return (
 						<Panel
-							key={order._id}
-							header={`Order: ${order._id}, Placed in ${
-								order.createDate ? moment(order.createDate).format('DD/MM/YYYY HH:mm') : ''
+							key={_id}
+							header={`Order: ${_id}, Placed in ${
+								createDate ? moment(createDate).format('DD/MM/YYYY HH:mm') : ''
 							}`}
 						>
-							{order.books.map((book, index) => {
+							{books.map((book, index) => {
 								const { title, publisher, author } = book;
 								return (
 									<div className={classes.book}>
@@ -41,6 +43,28 @@ const ordersSection = props => {
 			</Collapse>
 		</div>
 	);
+};
+
+ordersSection.defaultProps = {
+	orders: [],
+};
+
+ordersSection.propTypes = {
+	orders: PropTypes.arrayOf(
+		PropTypes.shape({
+			_id: PropTypes.string,
+			createDate: PropTypes.string,
+			books: PropTypes.arrayOf(
+				PropTypes.shape({
+					_id: PropTypes.string,
+					title: PropTypes.string,
+					publisher: PropTypes.string,
+					author: PropTypes.string,
+					image: PropTypes.string,
+				}),
+			),
+		}),
+	),
 };
 
 export default ordersSection;

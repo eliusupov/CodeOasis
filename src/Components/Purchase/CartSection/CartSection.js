@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button } from 'antd';
+import { PropTypes } from 'prop-types';
 
 import CartListItem from './CartIListtem/CartIListtem';
 
@@ -20,6 +21,26 @@ const cartSection = props => {
 			</li>
 		</ul>
 	);
+};
+
+cartSection.defaultProps = {
+	onClickCartItem: () => {},
+	onClickPlaceOrder: () => {},
+	cart: [],
+};
+
+cartSection.propTypes = {
+	onClickCartItem: PropTypes.func,
+	onClickPlaceOrder: PropTypes.func,
+	cart: PropTypes.arrayOf(
+		PropTypes.shape({
+			_id: PropTypes.string,
+			title: PropTypes.string,
+			publisher: PropTypes.string,
+			author: PropTypes.string,
+			image: PropTypes.string,
+		}),
+	),
 };
 
 export default cartSection;
