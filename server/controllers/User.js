@@ -1,7 +1,7 @@
-const User = require('../models/UserModel');
-const Book = require('../models/BookModel');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const User = require('../models/UserModel');
+const Book = require('../models/BookModel');
 
 exports.userCreate = async (req, res, next) => {
 	const { email, password, isAdmin } = req.body;

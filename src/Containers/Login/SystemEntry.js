@@ -33,7 +33,7 @@ const systemEntry = props => {
 	};
 
 	let submitFuntion = onSubmitRegister;
-	if (pathname === '/login') {
+	if (pathname === '/login' || pathname === '/') {
 		submitFuntion = onSubmitLogin;
 	}
 
@@ -45,7 +45,7 @@ const systemEntry = props => {
 				initialValues={{ remember: true }}
 				onFinish={submitFuntion}
 			>
-				{pathname === '/login' && <h3>Login to Book Store</h3>}
+				{(pathname === '/login' || pathname === '/') && <h3>Login to Book Store</h3>}
 				{pathname === '/register' && <h3>Register to Book Store</h3>}
 				<Form.Item
 					name="email"
@@ -73,11 +73,11 @@ const systemEntry = props => {
 				{pathname === '/register' && userAlreadyExist && (
 					<div className={classes.err}>Email already exists in the system</div>
 				)}
-				{pathname === '/login' && incorrectLogin && (
+				{(pathname === '/login' || pathname === '/') && incorrectLogin && (
 					<div className={classes.err}>Email or password are incorrect</div>
 				)}
 				<Form.Item>
-					{pathname === '/login' && (
+					{(pathname === '/login' || pathname === '/') && (
 						<Button type="primary" htmlType="submit">
 							<span>Log in</span>
 						</Button>
@@ -93,7 +93,7 @@ const systemEntry = props => {
 						<span>Login now!</span>
 					</Link>
 				)}
-				{pathname === '/login' && (
+				{(pathname === '/login' || pathname === '/') && (
 					<Link to="/register">
 						<span>Register now!</span>
 					</Link>

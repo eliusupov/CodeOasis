@@ -21,6 +21,7 @@ const routes = () => {
 
 	return (
 		<>
+			<Route exact path="/" component={SystemEntry} />
 			<Route exact path="/login" component={SystemEntry} />
 			<Route exact path="/register" component={SystemEntry} />
 			{token && (
