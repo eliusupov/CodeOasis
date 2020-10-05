@@ -27,10 +27,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/user', user);
 app.use('/book', book);
 app.use('/order', order);
-app.use((err, req, res, next) => {
-	if (err) err.statusCode = 500;
-	next(err);
-});
 
 app.listen(3000, () => {
 	console.log(`Server is up and running 3000`);
