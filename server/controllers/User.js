@@ -16,9 +16,6 @@ exports.userCreate = async (req, res, next) => {
 				});
 				res.status(201).send({ userId: user._id, token: token });
 			} catch (err) {
-				if (!err.statusCode) {
-					err.statusCode = 500;
-				}
 				return next(err);
 			}
 		} else {

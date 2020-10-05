@@ -9,9 +9,6 @@ exports.bookGetAll = async (req, res, next) => {
 		const books = await Book.find({ _id: { $nin: userCart } });
 		res.send({ books });
 	} catch (err) {
-		if (!err.statusCode) {
-			err.statusCode = 500;
-		}
 		return next(err);
 	}
 };
@@ -23,9 +20,6 @@ exports.bookAddNew = async (req, res, next) => {
 		const book = await newBook.save();
 		res.status(201).send({ book });
 	} catch (err) {
-		if (!err.statusCode) {
-			err.statusCode = 500;
-		}
 		return next(err);
 	}
 };
@@ -36,9 +30,6 @@ exports.bookUpdate = async (req, res, next) => {
 		const book = await Book.findOneAndUpdate({ _id: id }, { title, author, publisher, image }, { new: true });
 		res.status(200).send({ book });
 	} catch (err) {
-		if (!err.statusCode) {
-			err.statusCode = 500;
-		}
 		return next(err);
 	}
 };

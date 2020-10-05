@@ -16,9 +16,6 @@ exports.orderGetAll = async (req, res, next) => {
 		);
 		res.send({ orders });
 	} catch (err) {
-		if (!err.statusCode) {
-			err.statusCode = 500;
-		}
 		return next(err);
 	}
 };
@@ -41,9 +38,6 @@ exports.orderAddNew = async (req, res, next) => {
 			cart: user.cart,
 		});
 	} catch (err) {
-		if (!err.statusCode) {
-			err.statusCode = 500;
-		}
 		return next(err);
 	}
 };
