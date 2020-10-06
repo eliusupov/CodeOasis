@@ -1,13 +1,32 @@
 import axios from 'axios';
-import * as actions from './actions';
+import moment from 'moment';
+import jwtDecode from 'jwt-decode';
+
 import * as actionTypes from './actionTypes';
 
 const setUserData = token => ({ type: actionTypes.SET_USER_DATA, token });
 const setUserLogout = () => ({ type: actionTypes.SET_USER_LOGOUT });
 export const setUserCart = cart => ({ type: actionTypes.SET_USER_CART, cart });
 
-export const setTokenFromLocalstorage = token => dispatch => {
+export const setTokenFromLocalstorage = (token, history) => dispatch => {
 	axios.defaults.headers.authorization = `Bearer ${token}`;
+
+	const decodedToken = jwtDecode(token);
+	const tokenExpire = decodedToken.exp
+		? moment.unix(decodedToken.exp).format('DD/MM/YYYY HH:mm')
+		: moment().add('minutes', -1).format('DD/MM/YYYY HH:mm');
+	if (!localStorage.token || !moment(tokenExpire).isAfter(moment().format('DD/MM/YYYY HH:mm')))
+		localStorage.token = token;
+	if (!moment(tokenExpire).isAfter(moment().format('DD/MM/YYYY HH:mm'))) {
+		history.push('/login');
+	} else if (
+		history &&
+		history.location &&
+		(history.location.pathname === '/' || history.location.pathname === '/login')
+	) {
+		history.push('/bookstore');
+	}
+
 	dispatch(setUserData(token));
 };
 

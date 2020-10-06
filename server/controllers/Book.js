@@ -6,7 +6,7 @@ exports.bookGetAll = async (req, res, next) => {
 	try {
 		const user = await User.findOne({ _id: userId });
 		const userCart = user ? user.cart : [];
-		const books = await Book.find({ _id: { $nin: userCart } });
+		const books = await Book.find({ _id: { $nin: userCart }, active: true });
 		res.send({ books });
 	} catch (err) {
 		return next(err);
@@ -37,7 +37,7 @@ exports.bookUpdate = async (req, res, next) => {
 exports.bookDeleteSingle = async (req, res, next) => {
 	const { id } = req.params;
 	try {
-		const book = await Book.findOneAndDelete({ _id: id });
+		const book = await Book.findOneAndUpdate({ _id: id }, { active: false });
 		if (book) {
 			res.send({ id: book._id });
 		}

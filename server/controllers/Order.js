@@ -29,6 +29,7 @@ exports.orderAddNew = async (req, res, next) => {
 		const orderBooks = await Book.find({ _id: { $in: savedOrder.books } });
 		const user = await User.findOneAndUpdate({ _id: userId }, { cart: [] }, { new: true });
 		const order = {
+			_id: newOrder._id,
 			userId,
 			books: orderBooks,
 			createDate: savedOrder.createDate,

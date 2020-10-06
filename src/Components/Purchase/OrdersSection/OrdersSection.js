@@ -22,9 +22,9 @@ const ordersSection = props => {
 							}`}
 						>
 							{books.map((book, index) => {
-								const { title, publisher, author } = book;
+								const { _id, title, publisher, author } = book;
 								return (
-									<div className={classes.book}>
+									<div key={_id} className={classes.book}>
 										<p>
 											<span>{index + 1}</span>
 											<span>.</span>

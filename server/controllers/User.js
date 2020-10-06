@@ -12,7 +12,7 @@ exports.userCreate = async (req, res, next) => {
 				const newUser = new User({ email, password: await bcrypt.hash(password, 12), isAdmin });
 				const user = await newUser.save();
 				const token = jwt.sign({ userId: user._id, email: user.email, isAdmin: user.isAdmin }, 'secret', {
-					expiresIn: '8h',
+					expiresIn: '12h',
 				});
 				res.status(201).send({ userId: user._id, token: token });
 			} catch (err) {

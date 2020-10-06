@@ -14,16 +14,18 @@ const initialState = {
 const setUserData = (state, action) => {
 	const { token } = action;
 	const decodedToken = jwtDecode(token);
-	if (!localStorage.token) localStorage.token = token;
+	const tokenExpire = decodedToken.exp
+		? moment.unix(decodedToken.exp).format('DD/MM/YYYY HH:mm')
+		: moment().add('minutes', -1).format('DD/MM/YYYY HH:mm');
+	if (!localStorage.token || !moment(tokenExpire).isAfter(moment().format('DD/MM/YYYY HH:mm')))
+		localStorage.token = token;
 	return {
 		...state,
 		token,
 		isAdmin: decodedToken.isAdmin || false,
 		email: decodedToken.email || '',
 		userId: decodedToken.userId || '',
-		tokenExpire: decodedToken.exp
-			? moment.unix(decodedToken.exp).format('DD/MM/YYYY HH:mm')
-			: moment().format('DD/MM/YYYY HH:mm'),
+		tokenExpire,
 	};
 };
 

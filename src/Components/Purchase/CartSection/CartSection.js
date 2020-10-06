@@ -12,7 +12,7 @@ const cartSection = props => {
 		<ul className={classes.cartSection}>
 			<h2>Cart</h2>
 			{cart.map(book => (
-				<CartListItem book={book} onClickCartItem={id => onClickCartItem(id)} />
+				<CartListItem key={book._id} book={book} onClickCartItem={id => onClickCartItem(id)} />
 			))}
 			<li className={classes.orderButton}>
 				<Button type="primary" disabled={!cart.length} onClick={() => cart.length && onClickPlaceOrder(cart)}>

@@ -8,7 +8,7 @@ const cartListItem = props => {
 	const { book, onClickCartItem, hideOnClick } = props;
 	const { _id, title, publisher, author, image } = book;
 	return (
-		<li className={classes.cartListItem} key={_id}>
+		<li className={classes.cartListItem}>
 			<img
 				src={
 					image ||

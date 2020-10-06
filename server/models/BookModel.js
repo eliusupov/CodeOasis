@@ -22,6 +22,10 @@ const BookSchema = new Schema({
 		type: String,
 		trim: true,
 	},
+	active: {
+		type: Boolean,
+		default: true,
+	},
 	createDate: { type: Date, default: Date.now },
 });
 
