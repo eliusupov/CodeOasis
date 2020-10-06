@@ -15,8 +15,11 @@ export const setTokenFromLocalstorage = (token, history) => dispatch => {
 	const tokenExpire = decodedToken.exp
 		? moment.unix(decodedToken.exp).format('DD/MM/YYYY HH:mm')
 		: moment().add('minutes', -1).format('DD/MM/YYYY HH:mm');
-	if (!localStorage.token || !moment(tokenExpire).isAfter(moment().format('DD/MM/YYYY HH:mm')))
+
+	if (!localStorage.token || !moment(tokenExpire).isAfter(moment().format('DD/MM/YYYY HH:mm'))) {
 		localStorage.token = token;
+	}
+
 	if (!moment(tokenExpire).isAfter(moment().format('DD/MM/YYYY HH:mm'))) {
 		history.push('/login');
 	} else if (
