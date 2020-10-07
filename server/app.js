@@ -27,6 +27,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/user', user);
 app.use('/book', book);
 app.use('/order', order);
+app.use((req, res, next) => {
+	res.json();
+	next();
+});
 
 app.listen(3000, () => {
 	console.log(`Server is up and running 3000`);
