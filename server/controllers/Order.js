@@ -14,7 +14,7 @@ exports.orderGetAll = async (req, res, next) => {
 				books: await Book.find({ _id: { $in: order.books } }),
 			})),
 		);
-		res.send({ orders });
+		res.json({ orders });
 	} catch (err) {
 		return next(err);
 	}
@@ -34,7 +34,7 @@ exports.orderAddNew = async (req, res, next) => {
 			books: orderBooks,
 			createDate: savedOrder.createDate,
 		};
-		res.status(201).send({
+		res.status(201).json({
 			order,
 			cart: user.cart,
 		});
